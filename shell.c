@@ -200,16 +200,16 @@ int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
 /* toem_getenv.c */
-char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+char **get_environ(h_t *);
+int _unsetenv(h_t *, char *);
+int _setenv(h_t *, char *, char *);
 
 /* toem_history.c */
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
+char *get_history_file(h_t *h);
+int write_history(h_t *h;
+int read_history(h_t *h);
+int build_history_list(h_t *h, char *buf, int linecount);
+int renumber_history(h_t *h);
 
 /* toem_lists.c */
 list_t *add_node(list_t **, const char *, int);
