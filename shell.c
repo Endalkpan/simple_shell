@@ -93,9 +93,9 @@ typedef struct passinfo
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
-} info_t;
+} h_t;
 
-#define INFO_INIT \
+#define H_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
@@ -107,20 +107,20 @@ typedef struct passinfo
 typedef struct builtin
 {
 	char *type;
-	int (*func)(info_t *);
+	int (*func)(h_t *);
 } builtin_table;
 
 
 /* toem_shloop.c */
 int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+int find_builtin(h_t *);
+void find_cmd(h_t *);
+void fork_cmd(h_t *);
 
 /* toem_parser.c */
-int is_cmd(info_t *, char *);
+int is_cmd(h_t *, char *);
 char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+char *find_path(h_t *, char *, char *);
 
 /* loophsh.c */
 int loophsh(char **);
@@ -168,7 +168,7 @@ int _atoi(char *);
 
 /* toem_errors1.c */
 int _erratoi(char *);
-void print_error(info_t *, char *);
+void print_error(h_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
@@ -193,11 +193,11 @@ void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
 /* toem_environ.c */
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
+char *_getenv(h_t *, const char *);
+int _myenv(h_t *);
+int _mysetenv(h_t *);
+int _myunsetenv(h_t *);
+int populate_env_list(h_t *);
 
 /* toem_getenv.c */
 char **get_environ(h_t *);
